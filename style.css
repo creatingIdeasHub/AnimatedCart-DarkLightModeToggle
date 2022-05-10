@@ -1,0 +1,257 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --clr-light: #24c5ff;
+  --clr-dark: rgb(27, 1, 28);
+  --background: var(--clr-light);
+}
+
+.toggle svg path {
+  fill: rgb(27, 1, 28);
+}
+
+.darkmode {
+  --background: var(--clr-dark);
+}
+
+.darkmode .toggle svg path {
+  fill: white;
+}
+
+body {
+  font-family: "Lato", sans-serif;
+  min-height: 100vh;
+  width: 100%;
+  background: var(--background);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+button {
+  font-family: inherit;
+}
+
+.btn {
+  height: 6.25rem;
+  width: 25rem;
+  border-radius: 3.125rem;
+  border: none;
+  outline: none;
+  /* padding: 1rem 2rem; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  /* overflow: hidden; */
+  cursor: pointer;
+  background: rgb(192, 108, 238);
+  position: relative;
+}
+
+.container {
+  background: transparent;
+  padding: 5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.box {
+  position: absolute;
+  top: -6.25rem;
+  left: 11.4rem;
+  z-index: 200;
+}
+
+.cart {
+  width: 3rem;
+  stroke-width: 0rem;
+  height: 3rem;
+  fill: white;
+  stroke: none;
+}
+
+p {
+  color: white;
+  font-size: 1.3rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2ch;
+  font-weight: bold;
+  position: relative;
+}
+
+p::before {
+  position: absolute;
+  height: 0.2rem;
+  width: 1rem;
+  content: "";
+  background: white;
+  top: 0.7rem;
+  left: -5rem;
+}
+
+p::after {
+  position: absolute;
+  height: 0.2rem;
+  width: 1rem;
+  content: "";
+  background: white;
+  top: 0.7rem;
+  left: -5rem;
+  transform: rotate(90deg);
+}
+
+.cartAnim {
+  animation: 1s 1s moveCart ease-in;
+  animation-fill-mode: forwards;
+}
+
+@keyframes moveCart {
+  10% {
+    transform: rotate(-15deg);
+  }
+  30% {
+    transform: rotate(-2deg) translate(20px, 0);
+  }
+  100% {
+    transform: rotate(0deg) translate(300px, 0);
+    visibility: hidden;
+  }
+}
+
+.textAnim {
+  animation: 1s 1s moveText ease-in;
+  animation-fill-mode: forwards;
+}
+
+@keyframes moveText {
+  10% {
+    transform: translate(0, 0);
+    opacity: 0.7;
+  }
+  /* 20% {
+    opacity: 0;
+  } */
+  100% {
+    transform: translate(300px, 0);
+    visibility: hidden;
+    opacity: 0;
+  }
+}
+
+.boxAnim {
+  animation: 1s moveBox ease-in;
+}
+
+@keyframes moveBox {
+  10% {
+    scale: 2;
+  }
+  100% {
+    transform: translate(0, 200px);
+  }
+}
+
+@keyframes moveFirstSign {
+  5% {
+    top: 15px;
+  }
+  60% {
+    left: -200px;
+    width: 100px;
+  }
+  100% {
+    top: 15px;
+    left: -280px;
+    width: 200px;
+    visibility: hidden;
+  }
+}
+.textAnim::before {
+  animation: 1s 1s moveFirstSign ease-in;
+  animation-fill-mode: forwards;
+}
+
+@keyframes moveSecondSign {
+  5% {
+    transform: rotate(0deg);
+    top: 25px;
+    left: -75px;
+  }
+  60% {
+    transform: rotate(0deg);
+    top: 25px;
+    left: -165px;
+    width: 80px;
+  }
+  100% {
+    transform: rotate(0deg);
+    top: 25px;
+    left: -245px;
+    width: 170px;
+    visibility: hidden;
+  }
+}
+
+.textAnim::after {
+  animation: 1s 1s moveSecondSign ease-in;
+  animation-fill-mode: forwards;
+}
+
+@keyframes moveButton {
+  50% {
+    width: 23.125rem;
+  }
+  100% {
+    width: 25rem;
+  }
+}
+.buttonAnim {
+  animation: 0.6s moveButton ease-in 2s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes moveAdded {
+  100% {
+    visibility: visible;
+  }
+}
+
+.buttonAnim::before {
+  position: absolute;
+  content: "ADDED";
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 3rem;
+  font-weight: bold;
+  visibility: hidden;
+  animation: 0.6s moveAdded ease-in 2s;
+  animation-fill-mode: forwards;
+}
+
+.toggle {
+  position: absolute;
+  right: 2rem;
+  top: 2rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.icon:hover {
+  transform: scale(1.5);
+}
+
+.icon {
+  transition: 0.1s ease-in;
+}
